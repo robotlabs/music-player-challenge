@@ -1,0 +1,8 @@
+.box-song-list{
+  position: absolute;
+  top: 0;
+  
+  width: 100%;
+  height: 50%;
+  background-color: red;
+}
