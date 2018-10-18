@@ -3,13 +3,13 @@ import './style.css';
 
 class SongItem extends Component {
   render() {
+    console.log('this props index ', this.props.index);
     return (
       <li
+        className={'box-song-item'}
           onClick = { () => {
-            this.closeButton();
-            this.props.passSubClick(this, this.props.item);
-          }}
-          key={this.props.index}>
+            this.props.passClick(this, this.props.item);
+          }}>
           <a>{this.props.item.title}</a>
       </li>
     );

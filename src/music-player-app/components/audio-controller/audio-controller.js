@@ -4,24 +4,26 @@ import './style.css';
 class AudioControllers extends Component {
   constructor(props) {
     super(props);
+    //** create refs */
     this.node = React.createRef();
     this.barIn = React.createRef();
     this.playBt = React.createRef();
+    //** init state */
     this.state = {
       play: false
     }
-    this.url = "./mp3/milanocalibro9.mp3";
-    this.audio = new Audio(this.url);
+    //** init class stuff */
+    this.urlBase = "./mp3/";
+    this.audio = new Audio();
   }
   componentDidMount() {
-    this.audio.addEventListener("timeupdate", () => {
-      //console.log('this.audio.progress ', this.audio.currentTime);
-      //console.log('this.audio.progress ', this.audio.duration);
-      //this.barIn.style.width = (this.audio.currentTime / this.audio.duration) * 100 + '%';
-    });
     this.audio.addEventListener("ended", () => {
-      console.log('this.audio.ended ', this.audio.currentTime);
+      //** play next in the list */
+      this.props.playNextTrack();
     });
+    /* load track. pause is default as false */
+    this.playTrack(this.props);
+    /* start request animation frame */
     this.run();
   }
 
@@ -37,23 +39,34 @@ class AudioControllers extends Component {
     }
   }
 
-  barClick = (e) => {
-    console.log('e ', e);
+  progressBarClick = (e) => {
     let rect = e.target.getBoundingClientRect();
-    console.log(rect);
     let x = e.clientX - rect.left; 
     let percW = x / rect.width;
     this.audio.currentTime = this.audio.duration * (percW);
-    console.log(this.audio.currentTime);
   }
 
+  playTrack(props) {
+    let url = this.urlBase + this.props.songListData[props.songSelected].file;
+    if (this.audio) {
+      this.audio.src = url;
+      if (this.state.play) {
+        this.audio.play()
+      }
+    }
+  }
+  componentWillUpdate(nextProps) {
+    if (nextProps.songSelected !== this.props.songSelected) {
+      this.playTrack(nextProps);
+    }
+  }
   //** run
   run = () => {
-    // console.log('this.audio.currentTime ', this.audio.currentTime);
     this.barIn.current.style.width = (this.audio.currentTime / this.audio.duration) * 100 + '%';
     requestAnimationFrame(this.run.bind(this));
   };
   render() {
+    
     return (
       <div
         ref={this.node}
@@ -64,11 +77,25 @@ class AudioControllers extends Component {
           className='play-pause'
           onClick={this.playClick}>
         </div>
+        <div
+          className='ff-outer'
+          onClick={this.props.playNextTrack}>
+          <div 
+            ref={this.xx1}
+            className='ff ff1'
+            onClick={this.xx}>
+          </div>
+          <div 
+            ref={this.xx2}
+            className='ff ff2'
+            onClick={this.xx}>
+          </div>
+        </div>
       </div>
       <div>
         <div 
           className='bar-outer'
-          onClick={this.barClick}>
+          onClick={this.progressBarClick}>
           <div 
             className='bar'>
             <div 

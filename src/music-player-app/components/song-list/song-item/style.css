@@ -1,4 +1,6 @@
 .box-song-item{
-  position: absolute;
-  background-color: red;
+  position: relative;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: yellow;
 }

@@ -1,23 +1,27 @@
 [
   {
-    "title": "a1",
-    "file": "aaa1.mp3"
+    "title": "Milano Calibro 9",
+    "file": "milanocalibro9.mp3"
   },
   {
-    "title": "a2",
-    "file": "aaa2.mp3"
+    "title": "Eyes Wide Shut",
+    "file": "waltz.mp3"
   },
   {
-    "title": "a3",
-    "file": "aaa3.mp3"
+    "title": "Walking Through the Darkness",
+    "file": "walking-through-the-darkness.mp3"
   },
   {
-    "title": "a4",
-    "file": "aaa4.mp3"
+    "title": "Bad Things",
+    "file": "bad-things.mp3"
   },
   {
-    "title": "a5",
-    "file": "aaa5.mp3"
+    "title": "The Walking Dead",
+    "file": "the-walking-dead.mp3"
+  },
+  {
+    "title": "Cat in Town",
+    "file": "cat-in-town.mp3"
   }
 ]
 
