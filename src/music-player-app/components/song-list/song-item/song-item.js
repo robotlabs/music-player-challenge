@@ -14,7 +14,9 @@ class SongItem extends Component {
           onClick = { () => {
             this.props.passClick(this, this.props.item);
           }}>
-          <a>{this.props.item.title}</a>
+          <a>{this.props.item.title + ' (' + this.props.item.duration + 's)'}</a>
+          <div
+            className="box-author">{this.props.item.author}</div>
       </li>
     );
   }

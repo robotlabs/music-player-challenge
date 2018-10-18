@@ -1,27 +1,39 @@
 [
   {
     "title": "Milano Calibro 9",
-    "file": "milanocalibro9.mp3"
+    "author": "Calibro 35",
+    "file": "milanocalibro9.mp3",
+    "duration": 38.53
   },
   {
     "title": "Eyes Wide Shut",
-    "file": "waltz.mp3"
+    "author": "Dmitri Shostakovich",
+    "file": "waltz.mp3",
+    "duration": 46.21
   },
   {
     "title": "Walking Through the Darkness",
-    "file": "walking-through-the-darkness.mp3"
+    "author": "Tekhita",
+    "file": "walking-through-the-darkness.mp3",
+    "duration": 30.28
   },
   {
     "title": "Bad Things",
-    "file": "bad-things.mp3"
+    "author": "Jace Everett",
+    "file": "bad-things.mp3",
+    "duration": 32.29
   },
   {
     "title": "The Walking Dead",
-    "file": "the-walking-dead.mp3"
+    "author": "UNKLE",
+    "file": "the-walking-dead.mp3",
+    "duration": 51.80
   },
   {
     "title": "Cat in Town",
-    "file": "cat-in-town.mp3"
+    "author": "Tape Five",
+    "file": "cat-in-town.mp3",
+    "duration": 31.01
   }
 ]
 

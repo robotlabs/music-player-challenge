@@ -19,3 +19,11 @@
 .selected a{
   color: #FFA400;
 }
+
+.box-author{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+}
