@@ -3,7 +3,6 @@ import './style.css';
 
 class SongItem extends Component {
   render() {
-    console.log('this props index ', this.props.index);
     return (
       <li
         className={'box-song-item'}

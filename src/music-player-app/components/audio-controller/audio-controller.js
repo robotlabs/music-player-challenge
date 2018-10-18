@@ -8,6 +8,7 @@ class AudioControllers extends Component {
     this.node = React.createRef();
     this.barIn = React.createRef();
     this.playBt = React.createRef();
+    this.timeRemainingDiv = React.createRef();
     //** init state */
     this.state = {
       play: false
@@ -15,14 +16,15 @@ class AudioControllers extends Component {
     //** init class stuff */
     this.urlBase = "./mp3/";
     this.audio = new Audio();
+    /* load track. pause is default as false */
+    this.playTrack(this.props);
   }
   componentDidMount() {
     this.audio.addEventListener("ended", () => {
       //** play next in the list */
       this.props.playNextTrack();
     });
-    /* load track. pause is default as false */
-    this.playTrack(this.props);
+    
     /* start request animation frame */
     this.run();
   }
@@ -47,7 +49,9 @@ class AudioControllers extends Component {
   }
 
   playTrack(props) {
-    let url = this.urlBase + this.props.songListData[props.songSelected].file;
+    this.songSelected = this.props.songListData[props.songSelected];
+    console.log('this song ', this.songSelected);
+    let url = this.urlBase + this.songSelected.file;
     if (this.audio) {
       this.audio.src = url;
       if (this.state.play) {
@@ -63,10 +67,15 @@ class AudioControllers extends Component {
   //** run
   run = () => {
     this.barIn.current.style.width = (this.audio.currentTime / this.audio.duration) * 100 + '%';
+    let timeRemaining = (this.audio.duration - this.audio.currentTime).toFixed(2);;
+    if (!isNaN(timeRemaining)) {
+      this.timeRemainingDiv.current.innerHTML = timeRemaining;
+    }
+    
     requestAnimationFrame(this.run.bind(this));
   };
   render() {
-    
+    console.log(this.songSelected.title);
     return (
       <div
         ref={this.node}
@@ -81,18 +90,13 @@ class AudioControllers extends Component {
           className='ff-outer'
           onClick={this.props.playNextTrack}>
           <div 
-            ref={this.xx1}
-            className='ff ff1'
-            onClick={this.xx}>
+            className='ff ff1'>
           </div>
           <div 
-            ref={this.xx2}
-            className='ff ff2'
-            onClick={this.xx}>
+            className='ff ff2'>
           </div>
         </div>
       </div>
-      <div>
         <div 
           className='bar-outer'
           onClick={this.progressBarClick}>
@@ -104,7 +108,14 @@ class AudioControllers extends Component {
             </div>
           </div>
         </div>
-      </div>
+        <div
+          className='copy-song'>
+          {this.songSelected.title}
+        </div>
+        <div
+          ref={this.timeRemainingDiv}
+          className='time-remaining'>
+        </div>
     </div>
     );
   }
