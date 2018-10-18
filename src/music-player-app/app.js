@@ -33,6 +33,11 @@ class App extends Component {
       };
     });
   }
+  /* main components are song list and audio controller.
+  song list control the top part of screen. create a list of songs, 
+  and interact with app.
+  audio controllers take care of audio, and display his controllers ( play, pause, interactive progress bar)
+   */
   render() {
     return (
       <div>
@@ -43,10 +48,10 @@ class App extends Component {
         </SongList>
         <AudioController
           ref={this.audioController}
-          playNextTrack={this.playNextTrack}
-          songListData={SongListJson}
           songSelected={this.state.songSelected}
-        ></AudioController>
+          playNextTrack={this.playNextTrack}
+          songListData={SongListJson}>
+        </AudioController>
       </div>
     );
   }

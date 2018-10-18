@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './style.css';
-
+//** single item */
 import SongItem from './song-item/song-item';
 
-class App extends Component {
+class SongList extends Component {
   render() {
+    //** prepare the list of songs, and create buttons */
     let listSubItems = <div></div>;
     listSubItems  = this.props.songs.map((item, index) => {
-      console.log('item ', item, index);
-      console.log('song selected ', this.props.songSelected);
+      //** default is false. we check on their index */
       let selected = false;
       if (this.props.songSelected === index) {
         selected = true;
@@ -38,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default SongList;

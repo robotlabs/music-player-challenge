@@ -17,7 +17,7 @@ class AudioControllers extends Component {
     this.urlBase = "./mp3/";
     this.audio = new Audio();
     /* load track. pause is default as false */
-    this.playTrack(this.props);
+    this.loadTrack(this.props);
   }
   componentDidMount() {
     this.audio.addEventListener("ended", () => {
@@ -29,6 +29,7 @@ class AudioControllers extends Component {
     this.run();
   }
 
+  //** called when play pause is clicked */
   playClick = () => {
     if (this.state.play) {
       this.setState({ play: false})
@@ -41,6 +42,7 @@ class AudioControllers extends Component {
     }
   }
 
+  //** called when user click on the progress bar */
   progressBarClick = (e) => {
     let rect = e.target.getBoundingClientRect();
     let x = e.clientX - rect.left; 
@@ -48,23 +50,29 @@ class AudioControllers extends Component {
     this.audio.currentTime = this.audio.duration * (percW);
   }
 
-  playTrack(props) {
+  //** load a track and if state is not paused, play it */
+  loadTrack(props) {
     this.songSelected = this.props.songListData[props.songSelected];
     let url = this.urlBase + this.songSelected.file;
     if (this.audio) {
       this.audio.src = url;
       if (this.state.play) {
-        this.audio.play()
+        this.playTrack();
       }
     }
   }
+  playTrack() {
+    this.audio.play();
+  }
+  //** if user update track */
   componentWillUpdate(nextProps) {
     if (nextProps.songSelected !== this.props.songSelected) {
-      this.playTrack(nextProps);
+      this.loadTrack(nextProps);
     }
   }
   //** run
   run = () => {
+    //** update controllers */
     this.barIn.current.style.width = (this.audio.currentTime / this.audio.duration) * 100 + '%';
     let timeRemaining = (this.audio.duration - this.audio.currentTime).toFixed(2);;
     if (!isNaN(timeRemaining)) {
@@ -74,7 +82,6 @@ class AudioControllers extends Component {
     requestAnimationFrame(this.run.bind(this));
   };
   render() {
-    console.log(this.songSelected.title);
     return (
       <div
         ref={this.node}

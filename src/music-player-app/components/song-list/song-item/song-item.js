@@ -3,8 +3,8 @@ import './style.css';
 
 class SongItem extends Component {
   render() {
+    //** conditional style, if element is selected, we change the font color */
     let s = 'box-song-item';
-    console.log('this props selecte d ', this.props.selected);
     if (this.props.selected) {
       s = 'box-song-item selected'
     }
