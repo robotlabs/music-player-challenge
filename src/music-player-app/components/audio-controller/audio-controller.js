@@ -44,16 +44,16 @@ class AudioControllers extends Component {
 
   //** called when user click on the progress bar */
   progressBarClick = (e) => {
-    let rect = e.target.getBoundingClientRect();
-    let x = e.clientX - rect.left; 
-    let percW = x / rect.width;
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left; 
+    const percW = x / rect.width;
     this.audio.currentTime = this.audio.duration * (percW);
   }
 
   //** load a track and if state is not paused, play it */
   loadTrack(props) {
     this.songSelected = this.props.songListData[props.songSelected];
-    let url = this.urlBase + this.songSelected.file;
+    const url = this.urlBase + this.songSelected.file;
     if (this.audio) {
       this.audio.src = url;
       if (this.state.play) {
@@ -74,7 +74,7 @@ class AudioControllers extends Component {
   run = () => {
     //** update controllers */
     this.barIn.current.style.width = (this.audio.currentTime / this.audio.duration) * 100 + '%';
-    let timeRemaining = (this.audio.duration - this.audio.currentTime).toFixed(2);;
+    const timeRemaining = (this.audio.duration - this.audio.currentTime).toFixed(2);;
     if (!isNaN(timeRemaining)) {
       this.timeRemainingDiv.current.innerHTML = 'Time remaining: ' + timeRemaining;
     }

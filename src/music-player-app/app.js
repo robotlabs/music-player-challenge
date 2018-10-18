@@ -11,6 +11,27 @@ class App extends Component {
       songSelected: 0
     }
     this.audioController = React.createRef();
+
+    document.addEventListener('keydown', (e) => {
+      switch(e.code) {
+        case 'Space':
+          this.audioController.current.playClick();
+        break;
+        case 'ArrowRight': 
+          this.playNextTrack();
+        break;
+        case 'ArrowDown': 
+          this.playNextTrack();
+        break;
+        case 'ArrowLeft': 
+          this.playPrevTrack();
+        break;
+        case 'ArrowUp': 
+          this.playPrevTrack();
+        break;
+        default:
+      }
+    });
   }
 
   //** user interaction */
@@ -27,6 +48,18 @@ class App extends Component {
       let nextSong = this.state.songSelected + 1;
       if (nextSong >= SongListJson.length) {
         nextSong = 0;
+      }
+      return {
+        songSelected: nextSong
+      };
+    });
+  }
+  //** automatic play when a song end */
+  playPrevTrack = () => {
+    this.setState(() => {
+      let nextSong = this.state.songSelected - 1;
+      if (nextSong < 0) {
+        nextSong = SongListJson.length - 1;
       }
       return {
         songSelected: nextSong

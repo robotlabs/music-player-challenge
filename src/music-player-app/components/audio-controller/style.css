@@ -1,10 +1,10 @@
 .box-audio-controller{
   position: absolute;
-  top: 70%;
+  top: 80%;
   left: 0;
   
   width: 100%;
-  height: 30%;
+  height: 20%;
   
   background-color: #1E2749;
 }
@@ -29,7 +29,7 @@
 /* play button */
 .play-pause {
   position: absolute;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
   left: 10px;
 
@@ -37,18 +37,18 @@
   background: transparent;
   box-sizing: border-box;
   width: 0;
-  height: 100px;
+  height: 60px;
 
   border-color: transparent transparent transparent #464655;
   border-style: solid;
-  border-width: 50px 0 50px 70px;
+  border-width: 30px 0 30px 50px;
 
   transition: 100ms all ease;
   cursor: pointer;
 }
 .play-pause.paused {
   border-style: double;
-  border-width: 0px 0 0px 60px;
+  border-width: 0px 0 0px 50px;
 }
 .play-pause:hover {
   border-color: transparent transparent transparent #FFA400;
@@ -57,8 +57,8 @@
 /* forward button */
 .ff-outer{
   position: absolute;
-  top: 50%;
-  left: 110px;
+  top: 60%;
+  left: 80px;
 }
 .ff {
   position: absolute;
@@ -68,11 +68,11 @@
   background: transparent;
   box-sizing: border-box;
   width: 0;
-  height: 100px;
+  height: 60px;
 
   border-color: transparent transparent transparent #464655;
   border-style: solid;
-  border-width: 50px 0 50px 70px;
+  border-width: 30px 0 30px 40px;
 
   transition: 100ms all ease;
   cursor: pointer;
@@ -85,17 +85,17 @@
   left: 0;
 }
 .ff2{
-  left: 30px;
+  left: 23px;
 }
 
 /* bar progress */
 .bar-outer{
   position: absolute;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
-  left: 230px;
+  left: 170px;
 
-  width: calc(100% - 240px);
+  width: calc(100% - 200px);
   height: 10px;
 
   border-radius: 25px;
