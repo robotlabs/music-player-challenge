@@ -18,14 +18,10 @@ class App extends Component {
           this.audioController.current.playClick();
         break;
         case 'ArrowRight': 
-          this.playNextTrack();
-        break;
         case 'ArrowDown': 
           this.playNextTrack();
         break;
         case 'ArrowLeft': 
-          this.playPrevTrack();
-        break;
         case 'ArrowUp': 
           this.playPrevTrack();
         break;
