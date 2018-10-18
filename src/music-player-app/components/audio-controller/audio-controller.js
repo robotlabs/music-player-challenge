@@ -50,7 +50,6 @@ class AudioControllers extends Component {
 
   playTrack(props) {
     this.songSelected = this.props.songListData[props.songSelected];
-    console.log('this song ', this.songSelected);
     let url = this.urlBase + this.songSelected.file;
     if (this.audio) {
       this.audio.src = url;
@@ -69,7 +68,7 @@ class AudioControllers extends Component {
     this.barIn.current.style.width = (this.audio.currentTime / this.audio.duration) * 100 + '%';
     let timeRemaining = (this.audio.duration - this.audio.currentTime).toFixed(2);;
     if (!isNaN(timeRemaining)) {
-      this.timeRemainingDiv.current.innerHTML = timeRemaining;
+      this.timeRemainingDiv.current.innerHTML = 'Time remaining: ' + timeRemaining;
     }
     
     requestAnimationFrame(this.run.bind(this));

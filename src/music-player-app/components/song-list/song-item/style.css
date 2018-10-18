@@ -2,5 +2,20 @@
   position: relative;
   padding: 5px;
   margin-bottom: 5px;
+  background-color: #273469;
+  cursor: pointer;
+  transition: 400ms background-color linear;
+}
+.box-song-item a{
+  color: #C2E812;
+
+}
+.box-song-item:hover{
   background-color: yellow;
+}
+.box-song-item:hover a{
+  color: black;
+}
+.selected a{
+  color: #FFA400;
 }

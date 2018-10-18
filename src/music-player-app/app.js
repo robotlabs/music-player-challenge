@@ -37,6 +37,7 @@ class App extends Component {
     return (
       <div>
         <SongList
+          songSelected={this.state.songSelected}
           songClick={this.songClick}
           songs={SongListJson}>
         </SongList>

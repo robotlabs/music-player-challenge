@@ -6,7 +6,7 @@
   width: 100%;
   height: 30%;
   
-  background-color: yellow;
+  background-color: #1E2749;
 }
 
 /* copy song */
@@ -15,6 +15,7 @@
   font-family: Arial Black, Helvetica, sans-serif;
   font-style: bold;
   margin: 10px;
+  color: #FFA400;
 }
 
 .time-remaining{
@@ -23,6 +24,7 @@
   font-family: Arial Black, Helvetica, sans-serif;
   font-style: bold;
   margin: 10px;
+  color: #FFA400;
 }
 /* play button */
 .play-pause {
@@ -37,7 +39,7 @@
   width: 0;
   height: 100px;
 
-  border-color: transparent transparent transparent #202020;
+  border-color: transparent transparent transparent #464655;
   border-style: solid;
   border-width: 50px 0 50px 70px;
 
@@ -49,7 +51,7 @@
   border-width: 0px 0 0px 60px;
 }
 .play-pause:hover {
-  border-color: transparent transparent transparent #ff0099;
+  border-color: transparent transparent transparent #FFA400;
 }
 
 /* forward button */
@@ -68,7 +70,7 @@
   width: 0;
   height: 100px;
 
-  border-color: transparent transparent transparent #202020;
+  border-color: transparent transparent transparent #464655;
   border-style: solid;
   border-width: 50px 0 50px 70px;
 
@@ -76,7 +78,7 @@
   cursor: pointer;
 }
 .ff-outer:hover .ff{
-  border-color: transparent transparent transparent #ff0099;
+  border-color: transparent transparent transparent #FFA400;
 }
 
 .ff1{
@@ -113,7 +115,7 @@
   border-radius: 5px;
 
   transition: width .1s linear;
-  background-color: red;
+  background-color: #273469;
 
   pointer-events: none;
 }
@@ -127,6 +129,6 @@
   transition: 100ms all ease;
   transition: width .1s linear;
 
-  background-color: blue;
+  background-color: #FFA400;
   pointer-events: none;
 }

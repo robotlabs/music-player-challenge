@@ -7,8 +7,15 @@ class App extends Component {
   render() {
     let listSubItems = <div></div>;
     listSubItems  = this.props.songs.map((item, index) => {
+      console.log('item ', item, index);
+      console.log('song selected ', this.props.songSelected);
+      let selected = false;
+      if (this.props.songSelected === index) {
+        selected = true;
+      }
       return (
         <SongItem
+          selected={selected}
           passClick={this.props.songClick}
           key={index}
           index={index}
@@ -18,10 +25,15 @@ class App extends Component {
     });
 
     return (
-      <ul
+      <div 
         className="box-song-list">
-        {listSubItems}
+        <h1
+          className="songs-list-title">SONGS</h1>
+        <ul
+          className="song-list">
+          {listSubItems}
         </ul>
+      </div>
     );
   }
 }
