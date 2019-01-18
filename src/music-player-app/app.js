@@ -5,11 +5,9 @@ import AudioController from './components/audio-controller/audio-controller';
 import './app.css';
 
 class App extends Component {
+  state = { songSelected: 0 }
   constructor(props) {
     super(props);
-    this.state = {
-      songSelected: 0
-    }
     this.audioController = React.createRef();
 
     document.addEventListener('keydown', (e) => {
