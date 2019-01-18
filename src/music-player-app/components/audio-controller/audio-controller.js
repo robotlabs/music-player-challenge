@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
+import {number, func, array} from 'prop-types';
 import './style.css';
 
+//** presentationals */
+import {PlayBt, NextBt, ProgressBar, CopySong} from './presentationals';
+
 class AudioControllers extends Component {
+  state = { play: false };
+  static propTypes = {
+    songSelected: number,
+    playNextTrack: func,
+    songListData: array
+  }
+  static defaultProps = {
+    songSelected: 0,
+    playNextTrack: null,
+    songListData: []
+  }
+
   constructor(props) {
     super(props);
     //** create refs */
@@ -9,10 +25,6 @@ class AudioControllers extends Component {
     this.barIn = React.createRef();
     this.playBt = React.createRef();
     this.timeRemainingDiv = React.createRef();
-    //** init state */
-    this.state = {
-      play: false
-    }
     //** init class stuff */
     this.urlBase = "./mp3/";
     this.audio = new Audio();
@@ -87,41 +99,22 @@ class AudioControllers extends Component {
         ref={this.node}
         className="box-audio-controller">
       <div>
-        <div 
-          ref={this.playBt}
-          className='play-pause'
-          onClick={this.playClick}>
-        </div>
-        <div
-          className='ff-outer'
-          onClick={this.props.playNextTrack}>
-          <div 
-            className='ff ff1'>
-          </div>
-          <div 
-            className='ff ff2'>
-          </div>
-        </div>
+        <PlayBt
+          playBtRef={this.playBt}
+          playClick={this.playClick}>
+        </PlayBt>
+        <NextBt
+          playNextTrack={this.props.playNextTrack}>
+        </NextBt>
       </div>
-        <div 
-          className='bar-outer'
-          onClick={this.progressBarClick}>
-          <div 
-            className='bar'>
-            <div 
-              ref={this.barIn}
-              className='bar-in'>
-            </div>
-          </div>
-        </div>
-        <div
-          className='copy-song'>
-          {this.songSelected.title}
-        </div>
-        <div
-          ref={this.timeRemainingDiv}
-          className='time-remaining'>
-        </div>
+        <ProgressBar
+          barInRef={this.barIn}
+          progressBarClick={this.progressBarClick}>
+        </ProgressBar>
+        <CopySong
+          timeRemainingDiv={this.timeRemainingDiv}
+          songSelected={this.songSelected}>
+        </CopySong>
     </div>
     );
   }

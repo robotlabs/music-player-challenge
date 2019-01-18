@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
+import { array, number, func } from 'prop-types'
 import './style.css';
 //** single item */
 import SongItem from './song-item/song-item';
 
 class SongList extends Component {
+  static propTypes = {
+    songSelected: number,
+    songClick: func,
+    songs: array
+  }
   render() {
     //** prepare the list of songs, and create buttons */
     let listSubItems = <div></div>;
     listSubItems  = this.props.songs.map((item, index) => {
-      //** default is false. we check on their index */
-      let selected = false;
-      if (this.props.songSelected === index) {
-        selected = true;
-      }
       return (
         <SongItem
-          selected={selected}
+          selected={this.props.songSelected ? true : false}
           passClick={this.props.songClick}
           key={index}
           index={index}

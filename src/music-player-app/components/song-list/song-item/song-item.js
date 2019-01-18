@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
+import {bool, func, object} from 'prop-types'
 import './style.css';
 
 class SongItem extends Component {
+  static propTypes = {
+    selected: bool,
+    passClick: func,
+    item: object
+  }
+  static defaultProps = {
+    selected: false,
+    passClick: null,
+    key: -1,
+    item: {}
+  }
   render() {
-    //** conditional style, if element is selected, we change the font color */
-    let s = 'box-song-item';
-    if (this.props.selected) {
-      s = 'box-song-item selected'
-    }
     return (
       <li
-        className={s}
+        className={this.props.selected ? 'box-song-item selected' : 'box-song-item'}
           onClick = { () => {
             this.props.passClick(this, this.props.item);
           }}>
